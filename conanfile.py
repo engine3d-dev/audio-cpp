@@ -15,16 +15,7 @@ class AudioRecipe(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {"shared": False, "fPIC": True}
-    exports_sources = "CMakeLists.txt", "src/CMakeLists.txt", "demo/CMakeLists.txt", "audio/*", "audio/internal/*", "src/*", "demo/*"
-
-    def requirements(self):
-        # self.requires("gstreamer/1.24.7")
-        # self.requires("ffmpeg/7.0.1")
-        # self.requires("libsndio/1.9.0")
-        # self.requires("miniaudio/0.11.21")
-        # self.requires("openal/1.22.2")
-        # self.requires("gstreamer/1.24.7")
-        pass
+    exports_sources = "CMakeLists.txt", "src/CMakeLists.txt", "demo/CMakeLists.txt", "engine3d-audio/*.h", "engine3d-audio/internal/*.h", "src/engine3d-audio*", "demo/*", "engine3d-audio/Sound.hpp"
 
     def build_requirements(self):
         self.requires("make/4.4.1")
@@ -48,8 +39,9 @@ class AudioRecipe(ConanFile):
     
     def package(self):
         copy(self, "LICENSE", src=self.source_folder, dst=os.path.join(self.package_folder, "licenses"))
-        copy(self, pattern="*.h", src=os.path.join(self.source_folder, "audio"), dst=os.path.join(self.package_folder, "audio"))
-        copy(self, pattern="*.h", src=os.path.join(self.source_folder, "audio/internal"), dst=os.path.join(self.package_folder, "audio/internal"))
+        copy(self, pattern="*.h", src=os.path.join(self.source_folder, "engine3d-audio"), dst=os.path.join(self.package_folder, "engine3d-audio"))
+        copy(self, pattern="*.hpp", src=os.path.join(self.source_folder, "engine3d-audio"), dst=os.path.join(self.package_folder, "engine3d-audio"))
+        copy(self, pattern="*.h", src=os.path.join(self.source_folder, "engine3d-audio/internal"), dst=os.path.join(self.package_folder, "engine3d-audio/internal"))
         copy(self, pattern="*.a", src=self.build_folder, dst=os.path.join(self.package_folder, "lib"), keep_path=False)
         copy(self, pattern="*.so", src=self.build_folder, dst=os.path.join(self.package_folder, "lib"), keep_path=False)
         copy(self, pattern="*.lib", src=self.build_folder, dst=os.path.join(self.package_folder, "lib"), keep_path=False)
@@ -59,6 +51,6 @@ class AudioRecipe(ConanFile):
         cmake.install()
 
     def package_info(self):
-        self.cpp_info.set_property("cmake_target_name", "audio::audio")
+        self.cpp_info.set_property("cmake_target_name", "engine3d-audio::engine3d-audio")
         self.cpp_info.libs = ["engine3d-audio"]
-        self.cpp_info.includedirs = ['./', './audio']
+        self.cpp_info.includedirs = ['./', './engine3d-audio']

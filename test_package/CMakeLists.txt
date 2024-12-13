@@ -9,5 +9,5 @@ add_executable(${PROJECT_NAME} Application.cpp)
 
 target_link_libraries(
     ${PROJECT_NAME}
-    audio::audio
+    engine3d-audio::engine3d-audio
 )

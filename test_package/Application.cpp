@@ -1,5 +1,5 @@
 #define MINIAUDIO_IMPLEMENTATION
-#include <audio/internal/miniaudio.h>
+#include <engine3d-audio/internal/miniaudio.h>
 using namespace std;
 
 void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount)
