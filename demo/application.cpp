@@ -1,6 +1,4 @@
-#include <cstdio>
 #include <iostream>
-// #include "Sound.hpp"
 #include <engine3d-audio/Sound.hpp>
 using namespace std;
 

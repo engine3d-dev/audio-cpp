@@ -15,11 +15,19 @@ class AudioRecipe(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {"shared": False, "fPIC": True}
-    exports_sources = "CMakeLists.txt", "src/CMakeLists.txt", "demo/CMakeLists.txt", "engine3d-audio/*.h", "engine3d-audio/internal/*.h", "src/engine3d-audio*", "demo/*", "engine3d-audio/Sound.hpp"
+    exports_sources = "CMakeLists.txt", "src/CMakeLists.txt"
 
     def build_requirements(self):
-        self.requires("make/4.4.1")
+        self.tool_requires("make/4.4.1")
         self.tool_requires("cmake/3.27.1")
+        self.tool_requires("engine3d-cmake-utils/3.0")
+    
+    # This is how exporting the sources work
+    def export_sources(self):
+        copy(self,"CMakeLists.txt", self.recipe_folder, self.export_sources_folder)
+        copy(self,"*.hpp", self.recipe_folder, self.export_sources_folder)
+        copy(self,"*.h", self.recipe_folder, self.export_sources_folder)
+        copy(self,"*.cpp", self.recipe_folder, self.export_sources_folder)
 
     def layout(self):
         cmake_layout(self)
@@ -41,7 +49,6 @@ class AudioRecipe(ConanFile):
         copy(self, "LICENSE", src=self.source_folder, dst=os.path.join(self.package_folder, "licenses"))
         copy(self, pattern="*.h", src=os.path.join(self.source_folder, "engine3d-audio"), dst=os.path.join(self.package_folder, "engine3d-audio"))
         copy(self, pattern="*.hpp", src=os.path.join(self.source_folder, "engine3d-audio"), dst=os.path.join(self.package_folder, "engine3d-audio"))
-        copy(self, pattern="*.h", src=os.path.join(self.source_folder, "engine3d-audio/internal"), dst=os.path.join(self.package_folder, "engine3d-audio/internal"))
         copy(self, pattern="*.a", src=self.build_folder, dst=os.path.join(self.package_folder, "lib"), keep_path=False)
         copy(self, pattern="*.so", src=self.build_folder, dst=os.path.join(self.package_folder, "lib"), keep_path=False)
         copy(self, pattern="*.lib", src=self.build_folder, dst=os.path.join(self.package_folder, "lib"), keep_path=False)
