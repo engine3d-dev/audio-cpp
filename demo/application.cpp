@@ -2,17 +2,15 @@
 #include <engine3d-audio/Sound.hpp>
 using namespace std;
 
-
-
-
-int main(int argc, char** argv){
+int
+main(int argc, char** argv) {
     engine3d::audio::Sound sound = engine3d::audio::Sound(argv[1]);
-    while(true){
+    while (true) {
         sound.OnPlay();
-        
+
         char ch;
         std::cin >> ch;
-        if(ch == 'q'){
+        if (ch == 'q') {
             sound.OnStop();
             break;
         }
