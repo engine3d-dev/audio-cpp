@@ -2,20 +2,22 @@
 #include <string>
 #include <miniaudio/miniaudio.h>
 
-namespace audio{
+namespace audio {
     /**
      * @note Sound abstraction around the miniaudio API
-     * 
+     *
      */
-    class sound{
+    class sound {
     public:
         sound(const std::string& p_filename);
         ~sound();
 
         void on_play();
         void on_stop();
+
     private:
         void cleanup();
+
     private:
         ma_decoder m_decoder;
         ma_device m_audio_device_handler;
