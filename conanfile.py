@@ -5,7 +5,7 @@ from conan.tools.files import copy
 import os
 
 class AudioRecipe(ConanFile):
-    name = "engine3d-audio"
+    name = "engine-audio"
     version = "1.0"
     package_type = "library"
     license = "Apache-2.0"
@@ -21,6 +21,9 @@ class AudioRecipe(ConanFile):
         self.tool_requires("make/4.4.1")
         self.tool_requires("cmake/3.27.1")
         self.tool_requires("engine3d-cmake-utils/3.0")
+    
+    def requirements(self):
+        self.requires("miniaudio/1.0")
     
     # This is how exporting the sources work
     def export_sources(self):
@@ -47,8 +50,8 @@ class AudioRecipe(ConanFile):
     
     def package(self):
         copy(self, "LICENSE", src=self.source_folder, dst=os.path.join(self.package_folder, "licenses"))
-        copy(self, pattern="*.h", src=os.path.join(self.source_folder, "engine3d-audio"), dst=os.path.join(self.package_folder, "engine3d-audio"))
-        copy(self, pattern="*.hpp", src=os.path.join(self.source_folder, "engine3d-audio"), dst=os.path.join(self.package_folder, "engine3d-audio"))
+        copy(self, pattern="*.h", src=os.path.join(self.source_folder, "engine-audio"), dst=os.path.join(self.package_folder, "engine-audio"))
+        copy(self, pattern="*.hpp", src=os.path.join(self.source_folder, "engine-audio"), dst=os.path.join(self.package_folder, "engine-audio"))
         copy(self, pattern="*.a", src=self.build_folder, dst=os.path.join(self.package_folder, "lib"), keep_path=False)
         copy(self, pattern="*.so", src=self.build_folder, dst=os.path.join(self.package_folder, "lib"), keep_path=False)
         copy(self, pattern="*.lib", src=self.build_folder, dst=os.path.join(self.package_folder, "lib"), keep_path=False)
@@ -58,6 +61,6 @@ class AudioRecipe(ConanFile):
         cmake.install()
 
     def package_info(self):
-        self.cpp_info.set_property("cmake_target_name", "engine3d-audio::engine3d-audio")
-        self.cpp_info.libs = ["engine3d-audio"]
-        self.cpp_info.includedirs = ['./', './engine3d-audio']
+        self.cpp_info.set_property("cmake_target_name", "engine-audio::engine-audio")
+        self.cpp_info.libs = ["engine-audio"]
+        self.cpp_info.includedirs = ['./', './engine-audio']

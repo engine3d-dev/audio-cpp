@@ -1,8 +1,14 @@
 cmake_minimum_required(VERSION 3.25)
 project(engine-audio LANGUAGES C CXX)
 
-new_build_library(
+build_library(
     DIRECTORIES src
+    
+    PACKAGES
+    miniaudio
+
+    LINK_PACKAGES
+    miniaudio::miniaudio
 )
 
 generate_compile_commands()

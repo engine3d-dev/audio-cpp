@@ -6,8 +6,8 @@ build_application(
     application.cpp
     
     PACKAGES
-    engine3d-audio
+    engine-audio
     
     LINK_PACKAGES
-    engine3d-audio::engine3d-audio
+    engine-audio::engine-audio
 )
