@@ -3,6 +3,12 @@ project(engine-audio LANGUAGES C CXX)
 
 build_library(
     DIRECTORIES src
+
+    ENABLE_TESTS ON
+
+    UNIT_TEST_SOURCES
+    tests/main.test.cpp
+    tests/basic_audio.test.cpp
     
     PACKAGES
     miniaudio
