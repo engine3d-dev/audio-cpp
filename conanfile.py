@@ -43,7 +43,7 @@ class AudioRecipe(ConanFile):
         deps = CMakeDeps(self)
         deps.generate()
 
-        tc = CMakeToolchain(self, generator="Unix Makefiles")
+        tc = CMakeToolchain(self)
         tc.generate()
     
     def file_changed(self, filepath, previous_hash=None):

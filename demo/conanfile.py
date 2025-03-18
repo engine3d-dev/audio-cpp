@@ -16,7 +16,8 @@ class Demo(ConanFile):
 
     # Putting all of your packages here
     def requirements(self):
-        self.requires("engine3d-audio/1.0")
+        self.requires("miniaudio/1.0")
+        self.requires("engine-audio/1.0")
 
     def build(self):
         cmake = CMake(self)

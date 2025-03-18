@@ -7,7 +7,9 @@ build_application(
     
     PACKAGES
     engine-audio
+    miniaudio
     
     LINK_PACKAGES
     engine-audio::engine-audio
+    miniaudio::miniaudio
 )
