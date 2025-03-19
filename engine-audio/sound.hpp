@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
-/* #include <miniaudio/miniaudio.h> */
-#include <miniaudio/miniaudio.hpp>
+#include <miniaudio/miniaudio.h>
+
 namespace audio {
     /**
      * @note Sound abstraction around the miniaudio API
