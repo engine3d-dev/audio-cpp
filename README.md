@@ -12,7 +12,7 @@ Before contributing to engine3d-audio. Please fork this repository.
 You only need to build this project once using `conan create` command.
 
 ```
-conan create . -b missing
+conan build . -b missing
 ```
 
 Then you can build using `conan build` afterwards.
