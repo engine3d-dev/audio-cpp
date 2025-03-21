@@ -6,10 +6,9 @@ namespace audio {
     public:
         device_enumeration() {
             ma_context test_context;
-            if(ma_context_init(nullptr, 0, nullptr, &test_context) != MA_SUCCESS) {
-
+            if (ma_context_init(nullptr, 0, nullptr, &test_context) !=
+                MA_SUCCESS) {
             }
         }
-
     };
 };
