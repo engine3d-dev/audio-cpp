@@ -1,11 +1,10 @@
 #include <boost/ut.hpp>
 
-
-boost::ut::suite<"basic_test"> add_test = [](){
+boost::ut::suite<"basic_test"> add_test = []() {
     using namespace boost::ut;
 
     //! @note This is just a dummy test case for setting up test cases
-    "add"_test = [](){
+    "add"_test = []() {
         int x = 100;
         int y = 200;
         int z = (x + y);
@@ -15,7 +14,7 @@ boost::ut::suite<"basic_test"> add_test = [](){
         expect(z == 200);
     };
 
-    "subtract"_test = [](){
+    "subtract"_test = []() {
         int x = 100;
         int y = 200;
         int z = (x + y);
