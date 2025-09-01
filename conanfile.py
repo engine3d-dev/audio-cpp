@@ -8,7 +8,7 @@ import hashlib
 # from conan.tools.files import find_files
 
 class AudioRecipe(ConanFile):
-    name = "engine-audio"
+    name = "audio-cpp"
     version = "1.0"
     package_type = "library"
     license = "Apache-2.0"
@@ -95,8 +95,8 @@ class AudioRecipe(ConanFile):
     
     def package(self):
         copy(self, "LICENSE", src=self.source_folder, dst=os.path.join(self.package_folder, "licenses"))
-        copy(self, pattern="*.h", src=os.path.join(self.source_folder, "engine-audio"), dst=os.path.join(self.package_folder, "engine-audio"))
-        copy(self, pattern="*.hpp", src=os.path.join(self.source_folder, "engine-audio"), dst=os.path.join(self.package_folder, "engine-audio"))
+        copy(self, pattern="*.h", src=os.path.join(self.source_folder, "audio-cpp"), dst=os.path.join(self.package_folder, "audio-cpp"))
+        copy(self, pattern="*.hpp", src=os.path.join(self.source_folder, "audio-cpp"), dst=os.path.join(self.package_folder, "audio-cpp"))
         copy(self, pattern="*.a", src=self.build_folder, dst=os.path.join(self.package_folder, "lib"), keep_path=False)
         copy(self, pattern="*.so", src=self.build_folder, dst=os.path.join(self.package_folder, "lib"), keep_path=False)
         copy(self, pattern="*.lib", src=self.build_folder, dst=os.path.join(self.package_folder, "lib"), keep_path=False)
@@ -106,6 +106,6 @@ class AudioRecipe(ConanFile):
         cmake.install()
 
     def package_info(self):
-        self.cpp_info.set_property("cmake_target_name", "engine-audio::engine-audio")
-        self.cpp_info.libs = ["engine-audio"]
-        self.cpp_info.includedirs = ['./', './engine-audio']
+        self.cpp_info.set_property("cmake_target_name", "audio-cpp::audio-cpp")
+        self.cpp_info.libs = ["audio-cpp"]
+        self.cpp_info.includedirs = ['./', './audio-cpp']

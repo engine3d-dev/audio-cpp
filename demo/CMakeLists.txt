@@ -6,10 +6,10 @@ build_application(
     application.cpp
     
     PACKAGES
-    engine-audio
+    audio-cpp
     miniaudio
     
     LINK_PACKAGES
-    engine-audio::engine-audio
+    audio-cpp::audio-cpp
     miniaudio::miniaudio
 )

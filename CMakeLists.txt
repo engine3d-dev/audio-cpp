@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.25)
-project(engine-audio LANGUAGES C CXX)
+project(audio-cpp LANGUAGES C CXX)
 
 build_library(
     DIRECTORIES src
