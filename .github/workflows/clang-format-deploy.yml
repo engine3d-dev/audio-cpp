@@ -1,13 +1,13 @@
 name: clang-format Check
-on: [push, pull_request]
+on: [pull_request]
 jobs:
   formatting-check:
     name: Formatting Check
     runs-on: ubuntu-latest
     steps:
     
-    - name: 🌐 Downloading .clang-format from libhal
-      run: wget https://raw.githubusercontent.com/engine3d-dev/engine-audio/main/.clang-format -O .clang-format
+    - name: 🌐 Downloading .clang-format from TheAtlasEngine
+      run: wget https://raw.githubusercontent.com/engine3d-dev/TheAtlasEngine/.clang-format -O .clang-format
     
     - uses: actions/checkout@v4
     - name: Run clang-format style check for C/C++/Protobuf programs.
