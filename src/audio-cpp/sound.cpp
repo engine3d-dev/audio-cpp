@@ -2,16 +2,17 @@
 #include <audio-cpp/sound.hpp>
 
 namespace audio {
+    
     void data_callback(ma_device* p_device,
-                       void* p_output,
-                       const void* p_input,
+                       /*NOLINT*/void* p_output,
+                       /*NOLINT*/ const void* p_input,
                        ma_uint32 p_frame_count) {
-        ma_decoder* pDecoder = (ma_decoder*)p_device->pUserData;
-        if (pDecoder == NULL) {
+        ma_decoder* decoder = (ma_decoder*)p_device->pUserData;
+        if (decoder == nullptr) {
             return;
         }
 
-        ma_decoder_read_pcm_frames(pDecoder, p_output, p_frame_count, NULL);
+        ma_decoder_read_pcm_frames(decoder, p_output, p_frame_count, NULL);
 
         (void)p_input;
     }
