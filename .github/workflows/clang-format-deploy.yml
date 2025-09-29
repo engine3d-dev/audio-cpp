@@ -6,8 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-    - name: 🌐 Downloading .clang-format from TheAtlasEngine
-      run: wget https://raw.githubusercontent.com/engine3d-dev/TheAtlasEngine/.clang-format -O .clang-format
+    - name: 🌐 Downloading .clang-format from audio-wrappers
+      run: wget https://raw.githubusercontent.com/engine3d-dev/audio-wrappers/.clang-format -O .clang-format
     
     - uses: actions/checkout@v4
     - name: Run clang-format style check for C/C++/Protobuf programs.
