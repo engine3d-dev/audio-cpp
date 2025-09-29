@@ -17,6 +17,6 @@ build_library(
     miniaudio::miniaudio
 )
 
-# generate_compile_commands()
+generate_compile_commands()
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_LIST_DIR})
