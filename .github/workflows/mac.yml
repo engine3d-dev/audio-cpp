@@ -32,7 +32,7 @@ jobs:
               run: conan remote add engine3d-conan https://libhal.jfrog.io/artifactory/api/conan/engine3d-conan
 
             - name: Cloning Atlas repository
-              run: git clone https://github.com/engine3d-dev/TheAtlasEngine
+              run: git clone https://github.com/engine3d-dev/audio-wrappers
 
             - name: Building the project
               run: conan build . -b missing
